@@ -1,0 +1,46 @@
+#docker build -t node-dev -f Dockerfile.postgres.dev .
+#docker run -dp 4007:3000 --mount type=bind,source="$(pwd)",target=/app2 --name nspgdev node-pg-dev 
+#docker logs -f nsdev #depura para poder ver en el browser
+# docker exec -it nsdev /bin/sh -- ls appdoc
+#docker rmi  11 #deleted image
+#docker network create todo-app
+#docker network ls
+
+# docker run -d \
+#     --network todo-app --network-alias mysql \
+#     -v todo-mysql-data:/var/lib/mysql \
+#     -e MYSQL_ROOT_PASSWORD=secret \
+#     -e MYSQL_DATABASE=todos \
+#     mysql:5.7
+
+# docker exec -it <mysql-container-id> mysql -p
+#SHOW DATABASES;
+#docker run -it --network todo-app nicolaka/netshoot
+#dig mysql
+
+# docker run -dp 3000:3000 \
+#   -w /app -v ${PWD}:/app \
+#   --network todo-app \
+#   -e MYSQL_HOST=mysql \
+#   -e MYSQL_USER=root \
+#   -e MYSQL_PASSWORD=secret \
+#   -e MYSQL_DB=todos \
+#   node:12-alpine \
+#   sh -c "yarn install && yarn run dev"
+FROM node:12-alpine
+WORKDIR /app
+VOLUME .:/app2
+CMD npm install && npm run dev
+# docker run -dp 5001:3000 \
+#   -w //app -v $(pwd)://app \
+#   --network todo-app \
+#   -e MYSQL_HOST=mysql \
+#   -e MYSQL_USER=root \
+#   -e MYSQL_PASSWORD=secret \
+#   -e MYSQL_DB=todos \
+#   --name nsmdev \
+#   node-dev 
+
+  #docker logs <container-id>)
+  
+  
