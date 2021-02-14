@@ -1,0 +1,26 @@
+
+#docker-compose up -d run background
+#docker-compose logs -f
+#docker compose -rm
+version: "3.7"
+services:
+    app:
+      image: node-dev
+      ports:
+          - 5002:3000
+      volumes:
+          - ./:/app
+      environment:
+          MYSQL_HOST: mysql
+          MYSQL_USER: root
+          MYSQL_PASSWORD: secret
+          MYSQL_DB: todos
+    mysql:
+        image: mysql:5.7 
+        volumes:
+            - todo-mysql-data:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: secret
+            MYSQL_DATABASE: todos
+volumes:
+    todo-mysql-data:      
