@@ -1,0 +1,3 @@
+1. Crear volumes en doker-compose
+2. Crear variables de entorno para el archivo apllication.properties de inicializacion bd de posgrewsql
+3. Compilar image servicios con maven
